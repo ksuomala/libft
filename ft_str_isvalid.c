@@ -6,7 +6,7 @@
 /*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 18:50:48 by ksuomala          #+#    #+#             */
-/*   Updated: 2021/03/18 19:09:00 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 14:16:15 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 ** invalid character is found, return NULL.
 */
 
-int		ft_str_isvalid(char *str, char *valid_characters)
+int	ft_str_isvalid(char *str, char *valid_characters)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])

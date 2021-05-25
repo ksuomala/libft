@@ -6,7 +6,7 @@
 /*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 23:14:23 by ksuomala          #+#    #+#             */
-/*   Updated: 2020/12/18 02:25:06 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 17:57:23 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,24 @@
 
 #include "ft_printf.h"
 
-char		*ft_floats(t_struct *f)
+char	*ft_floats(t_struct *f)
 {
 	if (f->spe->type == 'g')
 		f->spe->g = 'e';
 	if (!ft_convert_float(f))
 		return (NULL);
 	if (f->spe->g == 'f')
-		if (!(f->spe->convert = ft_cut_f(f)))
+	{
+		f->spe->convert = ft_cut_f(f);
+		if (!f->spe->convert)
 			return (NULL);
+	}
 	if (f->spe->g == 'e')
-		if (!(f->spe->convert = ft_cut_e(f)))
+	{
+		f->spe->convert = ft_cut_e(f);
+		if (!f->spe->convert)
 			return (NULL);
+	}
 	if (f->spe->capital)
 		f->spe->convert = ft_toupper_str(f->spe->convert);
 	if (!ft_float_width(f))
@@ -39,7 +45,7 @@ char		*ft_floats(t_struct *f)
 
 static char	*ft_s(t_struct *f)
 {
-	f->spe->convert = va_arg(f->ap, char*);
+	f->spe->convert = va_arg(f->ap, char *);
 	if (!f->spe->convert)
 		f->spe->convert = ft_strdup("(null)");
 	else
@@ -47,14 +53,14 @@ static char	*ft_s(t_struct *f)
 	if (!f->spe->convert)
 		return (NULL);
 	f->spe->slen = (int)ft_strlen(f->spe->convert);
-	if (f->spe->p_len < f->spe->slen\
-	&& f->spe->p_is && f->spe->p_len >= 0)
+	if (f->spe->p_len < f->spe->slen
+		&& f->spe->p_is && f->spe->p_len >= 0)
 		f->spe->slen = f->spe->p_len;
 	f->spe->convert = ft_s_to_buf(f);
 	return (f->spe->convert);
 }
 
-int			ft_c(t_struct *f)
+int	ft_c(t_struct *f)
 {
 	if (f->spe->width > 1 && f->spe->zero && !f->spe->minus)
 		if (!ft_chrtobuf(f, '0', (f->spe->width - 1)))
@@ -75,9 +81,9 @@ int			ft_c(t_struct *f)
 	return (1);
 }
 
-char		*ft_nb(t_struct *f)
+char	*ft_nb(t_struct *f)
 {
-	int l;
+	int	l;
 
 	l = 0;
 	ft_argcast(f);
@@ -97,7 +103,7 @@ char		*ft_nb(t_struct *f)
 	return (f->spe->convert);
 }
 
-int			ft_type(t_struct *f)
+int	ft_type(t_struct *f)
 {
 	char	t;
 

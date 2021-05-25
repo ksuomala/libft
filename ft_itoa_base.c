@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksuomala <ksuomala@student.hive.com>       +#+  +:+       +#+        */
+/*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 15:40:33 by ksuomala          #+#    #+#             */
-/*   Updated: 2020/10/13 18:44:30 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 13:47:05 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	ft_check(long long *nb, long base, char str[20], char *sym)
 	return (numlen);
 }
 
-char		*ft_itoa_base(long long nb, long base)
+char	*ft_itoa_base(long long nb, long base)
 {
 	int			numlen;
 	long long	mod;

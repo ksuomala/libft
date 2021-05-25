@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_dtoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksuomala <ksuomala@student.hive.com>       +#+  +:+       +#+        */
+/*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 17:03:50 by ksuomala          #+#    #+#             */
-/*   Updated: 2020/10/16 18:45:58 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 13:44:25 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 ** Otherwise the string will be cut after the presicion without rounding up.
 */
 
-static void		ft_half_to_even(long double dec, long double *round)
+static void	ft_half_to_even(long double dec, long double *round)
 {
-	long long whole;
+	long long	whole;
 
 	whole = (long long)dec;
 	dec = dec - whole;
@@ -31,7 +31,7 @@ static void		ft_half_to_even(long double dec, long double *round)
 		*round += 1;
 }
 
-static char		ft_sign(long double dec)
+static char	ft_sign(long double dec)
 {
 	if (1 / dec < 0)
 		return ('-');
@@ -39,9 +39,9 @@ static char		ft_sign(long double dec)
 		return (0);
 }
 
-static char		*ft_roundup(char *str, char **whole, int i, char last)
+static char	*ft_roundup(char *str, char **whole, int i, char last)
 {
-	long long convert;
+	long long	convert;
 
 	str[i] = last;
 	while (!ft_isdigit(str[i]) && i > 0)
@@ -60,7 +60,7 @@ static char		*ft_roundup(char *str, char **whole, int i, char last)
 	return (str);
 }
 
-static char		*ft_decimal(long double dec, char **whole, int presicion,\
+static char	*ft_decimal(long double dec, char **whole, int presicion,
 int roundup)
 {
 	int		i;
@@ -68,7 +68,8 @@ int roundup)
 	char	c;
 
 	i = 0;
-	if (!(ret = ft_strnew(presicion)))
+	ret = ft_strnew(presicion);
+	if (!ret)
 		return (NULL);
 	while (i < presicion - 1)
 	{
@@ -87,7 +88,7 @@ int roundup)
 	return (ret);
 }
 
-char			*ft_dtoa(long double dec, int presicion, int roundup)
+char	*ft_dtoa(long double dec, int presicion, int roundup)
 {
 	char		*pre;
 	char		*post;

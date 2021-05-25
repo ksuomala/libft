@@ -6,7 +6,7 @@
 /*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 12:09:48 by ksuomala          #+#    #+#             */
-/*   Updated: 2020/07/01 18:38:45 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 14:15:17 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putstr(const char *str)
 {
-	size_t i;
+	size_t	i;
 
 	i = ft_strlen(str);
 	write(1, str, i);

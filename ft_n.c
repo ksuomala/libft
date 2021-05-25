@@ -6,7 +6,7 @@
 /*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/14 15:58:23 by ksuomala          #+#    #+#             */
-/*   Updated: 2020/06/30 18:57:30 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 13:53:51 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_n(int n)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < n)

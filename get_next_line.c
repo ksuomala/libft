@@ -6,13 +6,13 @@
 /*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 18:50:19 by ksuomala          #+#    #+#             */
-/*   Updated: 2021/03/22 17:32:54 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 15:23:38 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char			*ft_strcut(char **s)
+static char	*ft_strcut(char **s)
 {
 	char			*ret;
 	char			*tmp;
@@ -41,29 +41,24 @@ static char			*ft_strcut(char **s)
 	return (ret);
 }
 
-int					get_next_line(const int fd, char **line)
+int	get_next_line(const int fd, char **line)
 {
-	char			*tmp;
-	char			buf[BUFF_SIZE + 1];
-	static	char	*s[FD_SIZE];
-	int				n;
+	char		buf[BUFF_SIZE + 1];
+	static char	*s[FD_SIZE];
 
 	if (fd < 0 || !line || BUFF_SIZE <= 0)
 		return (-1);
-	while ((n = read(fd, buf, BUFF_SIZE)))
+	while (!ft_strchr(buf, '\n'))
 	{
-		if (n < 0)
+		ft_bzero(buf, BUFF_SIZE);
+		if (read(fd, buf, BUFF_SIZE) < 0)
 			return (-1);
-		buf[n] = '\0';
 		if (s[fd] == NULL)
 			s[fd] = ft_strnew(0);
-		tmp = ft_strjoin(s[fd], buf);
-		free(s[fd]);
-		s[fd] = tmp;
-		if (ft_strchr(buf, '\n'))
-			break ;
+		s[fd] = ft_strfjoin(s[fd], buf);
 	}
-	if ((*line = ft_strcut(&s[fd])))
+	*line = ft_strcut(&s[fd]);
+	if (*line)
 		return (1);
 	return (0);
 }

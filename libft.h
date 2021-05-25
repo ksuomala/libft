@@ -6,7 +6,7 @@
 /*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 12:07:29 by ksuomala          #+#    #+#             */
-/*   Updated: 2021/04/25 14:02:00 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 15:43:06 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
-# include "ft_printf/includes/ft_printf.h"
+# include "ft_printf.h"
+//# include "ft_printf/includes/ft_printf.h"
 
-typedef struct		s_list
+typedef struct s_list
 {
 	void			*content;
 	size_t			content_size;

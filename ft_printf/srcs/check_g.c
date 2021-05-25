@@ -6,15 +6,15 @@
 /*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 18:59:27 by ksuomala          #+#    #+#             */
-/*   Updated: 2020/11/25 20:54:42 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 18:45:25 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			ft_first_significant_digit(long double dec, int prelen, char hash)
+int	ft_first_significant_digit(long double dec, int prelen, char hash)
 {
-	int		pre;
+	int	pre;
 
 	pre = 0;
 	if (dec >= 1 || (dec > 0 && dec < 1))
@@ -34,9 +34,9 @@ int			ft_first_significant_digit(long double dec, int prelen, char hash)
 	return (prelen + pre);
 }
 
-void		ft_last_exponent(char *s, int *exp)
+void	ft_last_exponent(char *s, int *exp)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (ft_atoi(s) == 10)
@@ -55,7 +55,7 @@ void		ft_last_exponent(char *s, int *exp)
 	}
 }
 
-void		ft_nan_inf(t_struct *f)
+void	ft_nan_inf(t_struct *f)
 {
 	f->spe->sign = '\0';
 	f->spe->zero = 0;
@@ -63,20 +63,22 @@ void		ft_nan_inf(t_struct *f)
 	f->spe->g = '\0';
 }
 
-char		*ft_f_presicion(long double dec, int prelen, t_struct *f)
+char	*ft_f_presicion(long double dec, int prelen, t_struct *f)
 {
-	char		*s;
+	char	*s;
 
 	s = NULL;
 	if (f->spe->type == 'g' && f->spe->p_is && !f->spe->p_len)
 		prelen = 1;
 	if (f->spe->type == 'g')
 		prelen = ft_first_significant_digit(dec, prelen, f->spe->hash);
-	if (!(s = ft_dtoa(dec, prelen, 1)))
+	s = ft_dtoa(dec, prelen, 1);
+	if (!s)
 		return (NULL);
 	if (f->spe->type == 'g' && f->spe->hash && !ft_strchr(s, '.'))
-		if (!(s = ft_strfjoin(s, ft_strdup("."))))
-			return (NULL);
+		s = ft_strfjoin(s, ft_strdup("."));
+	if (!s)
+		return (NULL);
 	if (f->spe->type == 'e' || f->spe->g == 'e')
 	{
 		ft_last_exponent(s, &f->spe->exponent);

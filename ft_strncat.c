@@ -6,7 +6,7 @@
 /*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 00:13:07 by ksuomala          #+#    #+#             */
-/*   Updated: 2020/07/01 17:22:59 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 14:25:53 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strncat(char *dest, const char *src, size_t n)
 {
-	size_t dest_l;
-	size_t i;
+	size_t	dest_l;
+	size_t	i;
 
 	dest_l = ft_strlen(dest);
 	i = 0;

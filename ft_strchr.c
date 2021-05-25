@@ -6,7 +6,7 @@
 /*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 11:25:39 by ksuomala          #+#    #+#             */
-/*   Updated: 2020/12/23 07:49:20 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 14:17:04 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	size_t i;
+	size_t	i;
 
 	if (!s)
 		return (NULL);

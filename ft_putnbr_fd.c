@@ -6,7 +6,7 @@
 /*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 12:53:19 by ksuomala          #+#    #+#             */
-/*   Updated: 2020/07/02 00:08:29 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 13:58:59 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char c;
+	char	c;
 
 	if (n < 0)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnchar.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksuomala <ksuomala@student.hive.com>       +#+  +:+       +#+        */
+/*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 23:50:13 by ksuomala          #+#    #+#             */
-/*   Updated: 2020/09/22 00:01:09 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 14:04:54 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putnchar(char c, size_t n)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (i < n)

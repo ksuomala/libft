@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   add_to_buffer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksuomala <ksuomala@student.hive.com>       +#+  +:+       +#+        */
+/*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 17:37:52 by ksuomala          #+#    #+#             */
-/*   Updated: 2020/10/14 18:08:05 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 18:19:56 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char		*ft_chrnstr_post(char **s, char c, int chrcount)
+char	*ft_chrnstr_post(char **s, char c, int chrcount)
 {
 	int		len;
 	int		i;
@@ -34,7 +34,7 @@ char		*ft_chrnstr_post(char **s, char c, int chrcount)
 	return (new);
 }
 
-char		*ft_chrnstr_pre(char **s, char c, int chrcount)
+char	*ft_chrnstr_pre(char **s, char c, int chrcount)
 {
 	int		len;
 	int		i;
@@ -56,7 +56,7 @@ char		*ft_chrnstr_pre(char **s, char c, int chrcount)
 	return (new);
 }
 
-char		*ft_realloc_double(char **old, size_t len, size_t size)
+char	*ft_realloc_double(char **old, size_t len, size_t size)
 {
 	char		*new;
 	size_t		i;
@@ -75,10 +75,10 @@ char		*ft_realloc_double(char **old, size_t len, size_t size)
 	return (new);
 }
 
-char		*ft_strtobuf(t_struct *f)
+char	*ft_strtobuf(t_struct *f)
 {
-	int i;
-	int l;
+	int	i;
+	int	l;
 
 	l = ft_strlen(f->spe->convert);
 	i = 0;
@@ -98,9 +98,9 @@ char		*ft_strtobuf(t_struct *f)
 	return (f->out);
 }
 
-char		*ft_chrtobuf(t_struct *f, char c, int n)
+char	*ft_chrtobuf(t_struct *f, char c, int n)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (f->len == f->buf_size - 1)

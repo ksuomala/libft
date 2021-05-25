@@ -6,7 +6,7 @@
 #    By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/09 11:51:40 by ksuomala          #+#    #+#              #
-#    Updated: 2021/05/18 17:51:51 by ksuomala         ###   ########.fr        #
+#    Updated: 2021/05/25 17:46:20 by ksuomala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ LIB_DIR = ../
 
 LIB = libft.a
 
-INCL = -I includes/
+INCL = -I ../ -I includes/
 
 NAME = libftprintf.a
 
@@ -41,7 +41,7 @@ $(OBJS): $(OBJ_DIR) $(addprefix $(SRCS_DIR), $(SRCS))
 	@make libft.a -C $(LIB_DIR)
 	@cp $(LIB_DIR)$(LIB) $(NAME)
 #	@cp $(LIB_DIR)libft.h includes/
-	@$(CC) $(addprefix $(SRCS_DIR), $(SRCS)) $(INCL)
+	$(CC) $(addprefix $(SRCS_DIR), $(SRCS)) $(INCL)
 	@mv $(SRCS:.c=.o) $(OBJ_DIR)
 
 $(OBJ_DIR):

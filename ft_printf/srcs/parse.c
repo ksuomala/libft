@@ -6,7 +6,7 @@
 /*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 23:09:23 by ksuomala          #+#    #+#             */
-/*   Updated: 2020/12/18 02:22:30 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 18:17:58 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_width(t_struct *f)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (f->dup[f->i] == '0')
@@ -109,9 +109,9 @@ void	ft_flag(t_struct *f)
 		f->i++;
 }
 
-int		ft_parse(t_struct *f)
+int	ft_parse(t_struct *f)
 {
-	ft_bzero((void*)f->spe, sizeof(t_flags));
+	ft_bzero((void *)f->spe, sizeof(t_flags));
 	while (f->dup[f->i] != '\0' && !ft_strchr(SPEC, f->dup[f->i]))
 	{
 		if (ft_strchr(FLAG, f->dup[f->i]) || f->dup[f->i] == '*')
@@ -131,6 +131,6 @@ int		ft_parse(t_struct *f)
 	}
 	if (f->spe->convert)
 		free(f->spe->convert);
-	ft_bzero((void*)f->spe, sizeof(t_flags));
+	ft_bzero((void *)f->spe, sizeof(t_flags));
 	return (1);
 }

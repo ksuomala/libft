@@ -6,15 +6,15 @@
 /*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 18:28:02 by ksuomala          #+#    #+#             */
-/*   Updated: 2020/12/18 02:19:50 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 18:19:00 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char		ft_sign(t_struct *f)
+static char	ft_sign(t_struct *f)
 {
-	long long nb;
+	long long	nb;
 
 	nb = f->spe->data;
 	if (nb < 0)
@@ -28,7 +28,7 @@ static char		ft_sign(t_struct *f)
 	return (f->spe->sign);
 }
 
-int				ft_left(t_struct *f)
+int	ft_left(t_struct *f)
 {
 	if (f->spe->zero && !f->spe->minus && !f->spe->p_is)
 	{
@@ -49,7 +49,7 @@ int				ft_left(t_struct *f)
 	return (1);
 }
 
-char			*ft_removesign(char **convert)
+char	*ft_removesign(char **convert)
 {
 	int		len;
 	char	*tmp;
@@ -60,7 +60,7 @@ char			*ft_removesign(char **convert)
 	return (tmp);
 }
 
-int				ft_conversion_to_buf(t_struct *f)
+int	ft_conversion_to_buf(t_struct *f)
 {
 	if (f->spe->width > f->spe->slen && !f->spe->minus)
 		if (!(ft_left(f)))
@@ -76,7 +76,7 @@ int				ft_conversion_to_buf(t_struct *f)
 	return (1);
 }
 
-int				ft_d(t_struct *f)
+int	ft_d(t_struct *f)
 {
 	f->spe->slen = 0;
 	ft_argcast(f);

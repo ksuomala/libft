@@ -6,7 +6,7 @@
 /*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 15:08:09 by ksuomala          #+#    #+#             */
-/*   Updated: 2021/05/18 17:51:51 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 17:47:51 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 # define SPEC "cspfdiouxX%egEFG"
 # define FLAG "hlL#-+0123456789* ."
 
-# include "libft.h"
+# include "../../libft.h"
 # include <stdarg.h>
 
-typedef struct	s_flags
+typedef struct s_flags
 {
 	unsigned long long	ull;
 	unsigned char		capital;
@@ -45,7 +45,7 @@ typedef struct	s_flags
 	char				g;
 }				t_flags;
 
-typedef struct	s_struct
+typedef struct s_struct
 {
 	va_list			ap;
 	char			*out;

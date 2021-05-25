@@ -6,16 +6,16 @@
 /*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 14:47:28 by ksuomala          #+#    #+#             */
-/*   Updated: 2020/11/25 20:52:18 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 18:17:03 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char		*ft_roundup_g(char *s)
+char	*ft_roundup_g(char *s)
 {
-	int i;
-	int nb;
+	int	i;
+	int	nb;
 
 	i = (int)ft_strlen(s) - 1;
 	while (s[i])
@@ -41,10 +41,10 @@ char		*ft_roundup_g(char *s)
 	return (s);
 }
 
-int			ft_digit_presicion(char *s, int presicion, char hash)
+int	ft_digit_presicion(char *s, int presicion, char hash)
 {
-	int i;
-	int digits;
+	int	i;
+	int	digits;
 
 	i = 0;
 	digits = 0;
@@ -57,8 +57,8 @@ int			ft_digit_presicion(char *s, int presicion, char hash)
 		i++;
 	while (s[i] && digits < presicion)
 	{
-		if ((ft_isdigit(s[i]) && s[i] && digits) ||\
-		(ft_isdigit(s[i]) && s[i] && (s[i] != '0' || hash)))
+		if ((ft_isdigit(s[i]) && s[i] && digits)
+			|| (ft_isdigit(s[i]) && s[i] && (s[i] != '0' || hash)))
 			digits++;
 		i++;
 	}
@@ -70,9 +70,9 @@ int			ft_digit_presicion(char *s, int presicion, char hash)
 	return (i);
 }
 
-void		ft_presicion_g(char *s, int presicion, int hash)
+void	ft_presicion_g(char *s, int presicion, int hash)
 {
-	int		i;
+	int	i;
 
 	i = ft_digit_presicion(s, presicion, hash);
 	if (hash && s[i] == '.')
@@ -80,7 +80,7 @@ void		ft_presicion_g(char *s, int presicion, int hash)
 	s[i] = '\0';
 }
 
-char		*ft_cut_f(t_struct *f)
+char	*ft_cut_f(t_struct *f)
 {
 	char	*new;
 	int		i;
@@ -108,7 +108,7 @@ char		*ft_cut_f(t_struct *f)
 	return (new);
 }
 
-char		*ft_cut_e(t_struct *f)
+char	*ft_cut_e(t_struct *f)
 {
 	char	*new;
 	int		i;

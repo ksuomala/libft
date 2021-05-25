@@ -6,7 +6,7 @@
 /*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 17:46:56 by ksuomala          #+#    #+#             */
-/*   Updated: 2021/03/15 15:54:48 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 13:45:07 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_free2d(void **arr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!arr)

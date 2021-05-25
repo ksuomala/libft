@@ -6,7 +6,7 @@
 /*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 15:14:40 by ksuomala          #+#    #+#             */
-/*   Updated: 2020/07/06 20:54:17 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 14:17:27 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_strcmp(const char *s1, const char *s2)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (s1[i] == s2[i] && s1[i] != '\0')

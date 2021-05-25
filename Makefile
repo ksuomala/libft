@@ -6,7 +6,7 @@
 #    By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/09 11:51:40 by ksuomala          #+#    #+#              #
-#    Updated: 2021/04/25 13:59:23 by ksuomala         ###   ########.fr        #
+#    Updated: 2021/05/25 15:42:07 by ksuomala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,6 @@ ft_swap_ptr.c\
 ft_replace_ptr.c\
 ft_count_digits_s.c\
 ft_dtoa.c ft_strndup.c\
-ft_mod_double.c\
  ft_u_itoa_base.c\
 ft_free2d.c\
 ft_memdup.c\
@@ -51,17 +50,20 @@ OBJS = $(SRCS:.c=.o)
 
 NAME = libft.a
 
+INCL = -I ft_printf/includes
+
 PRINTF = ft_printf/libftprintf.a
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@ar rcs $(NAME) $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 	make -C ft_printf/
 	cp $(PRINTF) $(NAME)
 
 $(OBJS): $(SRCS)
-	@$(CC) $(SRCS)
+	$(CC) $(SRCS) $(INCL)
+	echo "Compiled!"
 
 clean:
 	@rm -f $(OBJS)

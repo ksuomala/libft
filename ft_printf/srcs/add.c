@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   add.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksuomala <ksuomala@student.hive.com>       +#+  +:+       +#+        */
+/*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 18:24:16 by ksuomala          #+#    #+#             */
-/*   Updated: 2020/10/13 22:46:53 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 18:31:47 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char		*ft_add_prefix(t_struct *f)
+char	*ft_add_prefix(t_struct *f)
 {
 	char	t;
 
 	t = f->spe->type;
 	if ((f->spe->hash && (f->spe->data || f->spe->ull)) || t == 'p' || t == 'o')
 	{
-		if (((t == 'X' || t == 'x') && (f->spe->data || f->spe->ull)) ||\
-		t == 'p')
+		if (((t == 'X' || t == 'x') && (f->spe->data || f->spe->ull))
+			|| t == 'p')
 			f->spe->convert = ft_strfjoin(ft_strdup("0x"), f->spe->convert);
 		if (t == 'o' && f->spe->hash && f->spe->convert[0] != '0')
 			f->spe->convert = ft_strfjoin(ft_strdup("0"), f->spe->convert);
@@ -32,7 +32,7 @@ char		*ft_add_prefix(t_struct *f)
 	return (f->spe->convert);
 }
 
-char		*ft_add_zero(t_struct *f)
+char	*ft_add_zero(t_struct *f)
 {
 	int		l;
 	char	t;
@@ -40,8 +40,8 @@ char		*ft_add_zero(t_struct *f)
 
 	l = (int)ft_strlen(f->spe->convert);
 	t = f->spe->type;
-	if (t == 'p' || ((t == 'x' || t == 'X') &&\
-	f->spe->hash && (f->spe->data || f->spe->ull)))
+	if (t == 'p' || ((t == 'x' || t == 'X')
+			&& f->spe->hash && (f->spe->data || f->spe->ull)))
 		l += 2;
 	if (f->spe->width > l)
 	{
@@ -56,7 +56,7 @@ char		*ft_add_zero(t_struct *f)
 	return (f->spe->convert);
 }
 
-char		*ft_add_presicion(t_struct *f)
+char	*ft_add_presicion(t_struct *f)
 {
 	int		pre;
 	char	*new;
@@ -64,9 +64,10 @@ char		*ft_add_presicion(t_struct *f)
 	pre = f->spe->p_len - (int)ft_strlen(f->spe->convert);
 	if (pre > 0)
 	{
-		if (!(new = ft_strnew(pre)))
+		new = ft_strnew(pre);
+		if (!new)
 			return (NULL);
-		new = ft_memset((char*)new, '0', pre);
+		new = ft_memset((char *)new, '0', pre);
 		f->spe->convert = ft_strfjoin(new, f->spe->convert);
 		if (!f->spe->convert)
 			return (NULL);
@@ -74,15 +75,15 @@ char		*ft_add_presicion(t_struct *f)
 	return (f->spe->convert);
 }
 
-char		*ft_add_itoa(t_struct *f)
+char	*ft_add_itoa(t_struct *f)
 {
-	char t;
+	char	t;
 
 	t = f->spe->type;
 	if (f->spe->p_is && !f->spe->p_len && !f->spe->data && !f->spe->ull)
 		f->spe->convert = ft_strnew(0);
-	else if (((t == 'o' || t == 'x' || t == 'X' || t == 'u') && (f->spe->ll ||\
-	f->spe->l)) || t == 'p')
+	else if (((t == 'o' || t == 'x' || t == 'X' || t == 'u') && (f->spe->ll
+				|| f->spe->l)) || t == 'p')
 	{
 		if (t == 'o')
 			f->spe->convert = ft_u_itoa_base(f->spe->ull, 8);
@@ -100,15 +101,15 @@ char		*ft_add_itoa(t_struct *f)
 	return (f->spe->convert);
 }
 
-void		ft_argcast(t_struct *f)
+void	ft_argcast(t_struct *f)
 {
-	char t;
+	char	t;
 
 	t = f->spe->type;
 	if (f->spe->l && (t == 'd' || t == 'i'))
 		f->spe->data = va_arg(f->ap, long);
-	else if ((f->spe->l && (t == 'x' || t == 'X' || t == 'u' || t == 'o')) ||\
-	t == 'p')
+	else if ((f->spe->l && (t == 'x' || t == 'X' || t == 'u' || t == 'o'))
+		|| t == 'p')
 		f->spe->ull = va_arg(f->ap, unsigned long);
 	else if (f->spe->ll && (t == 'd' || t == 'i'))
 		f->spe->data = (long long)va_arg(f->ap, long long int);

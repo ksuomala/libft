@@ -6,7 +6,7 @@
 /*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 10:45:33 by ksuomala          #+#    #+#             */
-/*   Updated: 2021/03/13 20:55:03 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 15:04:25 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static	char	**ft_free(char **arr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (arr[i])
@@ -30,7 +30,7 @@ static	char	**ft_free(char **arr)
 
 static size_t	ft_splitlen(char const *s, char c)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (s[i] == c)
@@ -42,8 +42,8 @@ static size_t	ft_splitlen(char const *s, char c)
 
 static size_t	ft_words(char const *s, char c)
 {
-	size_t i;
-	size_t w;
+	size_t	i;
+	size_t	w;
 
 	i = 0;
 	w = 0;
@@ -60,7 +60,7 @@ static size_t	ft_words(char const *s, char c)
 	return (w);
 }
 
-static char		*ft_returnstring(char const *s, char c)
+static char	*ft_returnstring(char const *s, char c)
 {
 	size_t	i;
 	size_t	i_new;
@@ -85,7 +85,7 @@ static char		*ft_returnstring(char const *s, char c)
 	return (ptr);
 }
 
-char			**ft_strsplit(char const *s, char c)
+char	**ft_strsplit(char const *s, char c)
 {
 	char	**split;
 	size_t	words;
@@ -97,7 +97,7 @@ char			**ft_strsplit(char const *s, char c)
 	i = 0;
 	i_new = 0;
 	words = ft_words(s, c);
-	split = (char **)ft_memalloc(sizeof(char*) * (words + 1));
+	split = (char **)ft_memalloc(sizeof(char *) * (words + 1));
 	if (!split)
 		return (NULL);
 	while (i < words)

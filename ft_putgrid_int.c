@@ -6,7 +6,7 @@
 /*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 01:55:31 by ksuomala          #+#    #+#             */
-/*   Updated: 2020/12/24 02:15:54 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 13:58:27 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_putgrid_int(int **grid, int y, int x, int min_width)
 {
-	int i_x;
-	int i_y;
+	int	i_x;
+	int	i_y;
 
 	i_y = 0;
 	i_x = 0;

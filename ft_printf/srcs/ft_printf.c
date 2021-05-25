@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksuomala <ksuomala@student.hive.com>       +#+  +:+       +#+        */
+/*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 15:02:37 by ksuomala          #+#    #+#             */
-/*   Updated: 2020/10/14 16:15:59 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 18:41:20 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			ft_flen(char *str)
+int	ft_flen(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (*str != '\0' && *str != '%')
@@ -36,7 +36,7 @@ static int	ft_is_spec(t_struct *f)
 	return (1);
 }
 
-int			ft_start(t_struct *f)
+int	ft_start(t_struct *f)
 {
 	while (f->dup[f->i] != '\0')
 	{
@@ -44,37 +44,35 @@ int			ft_start(t_struct *f)
 		{
 			if (ft_is_spec(f))
 			{
-				f->i++;
-				if (!(f->spe = (t_flags*)malloc(sizeof(t_flags))))
+				f->spe = (t_flags *)malloc(sizeof(t_flags));
+				if (!f->spe)
 					return (0);
 				if (!ft_parse(f))
 					return (0);
 				if (f->spe)
 					free(f->spe);
 			}
-			else
-				f->i++;
 		}
 		else
-		{
 			ft_chrtobuf(f, f->dup[f->i], 1);
-			f->i++;
-		}
+		f->i++;
 	}
 	return (1);
 }
 
-int			ft_snprintf(char *s, size_t n, const char *format, ...)
+int	ft_snprintf(char *s, size_t n, const char *format, ...)
 {
 	t_struct	f;
 	int			ret_val;
 
-	ft_bzero((void*)&f, sizeof(t_struct));
+	ft_bzero((void *)&f, sizeof(t_struct));
 	f.buf_size = 1001;
-	if (!(f.out = (char*)malloc(sizeof(char) * f.buf_size)))
+	f.out = (char *)malloc(sizeof(char) * f.buf_size);
+	if (!f.out)
 		return (-1);
 	ft_bzero(f.out, f.buf_size);
-	if (!(f.dup = ft_strdup(format)))
+	f.dup = ft_strdup(format);
+	if (!f.dup)
 		return (ft_fail(&f));
 	va_start(f.ap, format);
 	if (!ft_start(&f))
@@ -90,17 +88,19 @@ int			ft_snprintf(char *s, size_t n, const char *format, ...)
 	return (ret_val);
 }
 
-int			ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	t_struct	f;
 	int			ret_val;
 
-	ft_bzero((void*)&f, sizeof(t_struct));
+	ft_bzero((void *)&f, sizeof(t_struct));
 	f.buf_size = 1001;
-	if (!(f.out = (char*)malloc(sizeof(char) * f.buf_size)))
+	f.out = (char *)malloc(sizeof(char) * f.buf_size);
+	if (!f.out)
 		return (-1);
 	ft_bzero(f.out, f.buf_size);
-	if (!(f.dup = ft_strdup(format)))
+	f.dup = ft_strdup(format);
+	if (!f.dup)
 		return (ft_fail(&f));
 	va_start(f.ap, format);
 	ft_start(&f);

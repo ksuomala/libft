@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksuomala <ksuomala@student.hive.com>       +#+  +:+       +#+        */
+/*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 14:54:59 by ksuomala          #+#    #+#             */
-/*   Updated: 2020/07/14 22:38:33 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 13:48:13 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_intlength(int n)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	if (n < 0)
@@ -27,13 +27,14 @@ static int	ft_intlength(int n)
 	return (i);
 }
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	int		l;
 	char	*ret;
 
 	l = ft_intlength(n);
-	if (!(ret = ft_strnew(l)))
+	ret = ft_strnew(l);
+	if (!ret)
 		return (NULL);
 	if (n < 0)
 	{

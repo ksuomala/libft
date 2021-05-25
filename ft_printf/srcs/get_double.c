@@ -6,21 +6,21 @@
 /*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 14:50:16 by ksuomala          #+#    #+#             */
-/*   Updated: 2020/12/18 02:20:53 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 17:52:26 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char			*ft_add_postfix(t_struct *f, char *s)
+char	*ft_add_postfix(t_struct *f, char *s)
 {
 	char	*division;
 
 	division = ft_strnew(4);
 	if (!division)
 		return (NULL);
-	if ((f->spe->p_is && !f->spe->p_len && f->spe->hash) ||\
-	(f->spe->type == 'g' && f->spe->hash && f->spe->p_is && f->spe->p_len == 1))
+	if ((f->spe->p_is && !f->spe->p_len && f->spe->hash) || (f->spe->type
+			== 'g' && f->spe->hash && f->spe->p_is && f->spe->p_len == 1))
 		division[0] = '.';
 	if (f->spe->exponent > 9)
 		division = ft_strcat(division, "e+");
@@ -40,9 +40,9 @@ char			*ft_add_postfix(t_struct *f, char *s)
 	return (division);
 }
 
-int				ft_special_numbers(t_struct *f, long double dec)
+int	ft_special_numbers(t_struct *f, long double dec)
 {
-	char *s;
+	char	*s;
 
 	s = NULL;
 	if (dec == 1.0 / 0.0)
@@ -58,7 +58,7 @@ int				ft_special_numbers(t_struct *f, long double dec)
 	return (1);
 }
 
-char			*ft_convert_float(t_struct *f)
+char	*ft_convert_float(t_struct *f)
 {
 	long double	nb;
 
@@ -87,9 +87,9 @@ char			*ft_convert_float(t_struct *f)
 	return (f->spe->convert);
 }
 
-char			*ft_float_width(t_struct *f)
+char	*ft_float_width(t_struct *f)
 {
-	int l;
+	int	l;
 
 	l = (int)ft_strlen(f->spe->convert);
 	if (f->spe->width > l)

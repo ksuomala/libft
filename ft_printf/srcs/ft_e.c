@@ -3,21 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_e.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksuomala <ksuomala@student.hive.com>       +#+  +:+       +#+        */
+/*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 15:49:33 by ksuomala          #+#    #+#             */
-/*   Updated: 2020/10/14 17:38:58 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 14:57:39 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char				ft_shorter_spe(long double *nb, int exp, int pre)
+char	ft_shorter_spe(long double *nb, int exp, int pre)
 {
 	char	*roundup;
 	int		conv;
 
-	if (!(roundup = ft_dtoa(*nb, pre, 1)))
+	roundup = ft_dtoa(*nb, pre, 1);
+	if (!roundup)
 		return (0);
 	conv = ft_atoi(roundup);
 	free(roundup);
@@ -46,9 +47,9 @@ static long double	ft_exponent(int *exp, long double temp)
 	return (temp);
 }
 
-int					ft_e(t_struct *f, long double *nb)
+int	ft_e(t_struct *f, long double *nb)
 {
-	long double temp;
+	long double	temp;
 	int			presicion;
 
 	if (f->spe->p_is && f->spe->p_len)
@@ -61,8 +62,11 @@ int					ft_e(t_struct *f, long double *nb)
 		presicion--;
 	temp = ft_exponent(&f->spe->exponent, *nb);
 	if (f->spe->g)
-		if (!(f->spe->g = ft_shorter_spe(&temp, f->spe->exponent, presicion)))
+	{
+		f->spe->g = ft_shorter_spe(&temp, f->spe->exponent, presicion);
+		if (!f->spe->g)
 			return (0);
+	}
 	if (f->spe->g == 'e' || f->spe->type == 'e')
 		*nb = temp;
 	return (1);

@@ -6,13 +6,13 @@
 /*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/05 13:18:23 by ksuomala          #+#    #+#             */
-/*   Updated: 2020/06/08 12:36:17 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 14:15:48 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_sqrt(int nb)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	while (i * i < nb && i < 46341)

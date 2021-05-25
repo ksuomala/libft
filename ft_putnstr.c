@@ -6,7 +6,7 @@
 /*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/14 15:22:34 by ksuomala          #+#    #+#             */
-/*   Updated: 2020/06/30 19:33:16 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 14:05:47 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putnstr(const char *str, size_t n)
 {
-	size_t l;
+	size_t	l;
 
 	l = ft_strlen(str);
 	if (n < l)

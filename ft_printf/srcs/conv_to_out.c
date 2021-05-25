@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conv_to_out.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksuomala <ksuomala@student.hive.com>       +#+  +:+       +#+        */
+/*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 16:48:49 by ksuomala          #+#    #+#             */
-/*   Updated: 2020/10/14 17:42:53 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/25 18:15:40 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,8 @@ char	*ft_s_to_buf(t_struct *f)
 
 char	*ft_nb_to_buf(t_struct *f, int l)
 {
-	if ((l > 0 && !f->spe->minus && !f->spe->zero) ||\
-	(f->spe->zero && f->spe->p_is && l > 0 &&\
-	!f->spe->minus))
+	if ((l > 0 && !f->spe->minus && !f->spe->zero)
+		|| (f->spe->zero && f->spe->p_is && l > 0 && !f->spe->minus))
 	{
 		if (!(ft_chrtobuf(f, ' ', l)))
 			return (NULL);
@@ -58,9 +57,9 @@ char	*ft_nb_to_buf(t_struct *f, int l)
 char	*ft_fl_to_buf(t_struct *f, int l)
 {
 	if (f->spe->sign && !f->spe->zero)
-		if (!(f->spe->convert = ft_chrnstr_pre(&f->spe->convert,\
-		f->spe->sign, 1)))
-			return (NULL);
+		f->spe->convert = ft_chrnstr_pre(&f->spe->convert, f->spe->sign, 1);
+	if (!f->spe->convert)
+		return (NULL);
 	if (l > 0 && !f->spe->minus && !f->spe->zero)
 		f->spe->convert = ft_chrnstr_pre(&f->spe->convert, ' ', l);
 	else if (l > 0 && !f->spe->minus && f->spe->zero)
@@ -68,13 +67,14 @@ char	*ft_fl_to_buf(t_struct *f, int l)
 	if (!f->spe->convert)
 		return (NULL);
 	if (f->spe->sign && f->spe->zero)
-		if (!(f->spe->convert = ft_chrnstr_pre(&f->spe->convert,\
-		f->spe->sign, 1)))
-			return (NULL);
+		f->spe->convert = ft_chrnstr_pre(&f->spe->convert, f->spe->sign, 1);
+	if (!f->spe->convert)
+		return (NULL);
 	if (f->spe->p_is && !f->spe->p_len && f->spe->hash && (f->spe->type == 'f'\
 	|| f->spe->g == 'f') && !ft_strchr(f->spe->convert, '.'))
-		if (!(f->spe->convert = ft_chrnstr_post(&f->spe->convert, '.', 1)))
-			return (0);
+		f->spe->convert = ft_chrnstr_post(&f->spe->convert, '.', 1);
+	if (!f->spe->convert)
+		return (NULL);
 	if (l > 0 && f->spe->minus)
 		f->spe->convert = ft_chrnstr_post(&f->spe->convert, ' ', l);
 	return (f->spe->convert);
