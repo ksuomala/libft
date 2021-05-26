@@ -6,13 +6,13 @@
 /*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 18:59:27 by ksuomala          #+#    #+#             */
-/*   Updated: 2021/05/25 18:45:25 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/26 13:13:47 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_first_significant_digit(long double dec, int prelen, char hash)
+int	ft_first_significunt_digit(long double dec, int prelen, char hash)
 {
 	int	pre;
 
@@ -71,7 +71,7 @@ char	*ft_f_presicion(long double dec, int prelen, t_struct *f)
 	if (f->spe->type == 'g' && f->spe->p_is && !f->spe->p_len)
 		prelen = 1;
 	if (f->spe->type == 'g')
-		prelen = ft_first_significant_digit(dec, prelen, f->spe->hash);
+		prelen = ft_first_significunt_digit(dec, prelen, f->spe->hash);
 	s = ft_dtoa(dec, prelen, 1);
 	if (!s)
 		return (NULL);
