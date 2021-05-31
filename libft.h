@@ -6,7 +6,7 @@
 /*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 12:07:29 by ksuomala          #+#    #+#             */
-/*   Updated: 2021/05/25 15:43:06 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/31 17:52:12 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
-# include "ft_printf.h"
-//# include "ft_printf/includes/ft_printf.h"
+//# include "ft_printf.h"
+# include "ft_printf/includes/ft_printf.h"
 
 typedef struct s_list
 {
@@ -119,5 +119,6 @@ void				ft_putgrid_chr(char **grid, int y);
 void				ft_putgrid_int(int **grid, int y, int x, int min_width);
 int					ft_str_isvalid(char *str, char *valid_characters);
 int					ft_isnumeric_str(char *str);
+int					ft_strnbrcmp(char *a, char *b);
 
 #endif

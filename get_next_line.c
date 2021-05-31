@@ -6,7 +6,7 @@
 /*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 18:50:19 by ksuomala          #+#    #+#             */
-/*   Updated: 2021/05/25 15:23:38 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/05/31 18:12:06 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,13 @@ static char	*ft_strcut(char **s)
 int	get_next_line(const int fd, char **line)
 {
 	char		buf[BUFF_SIZE + 1];
+	char		*tmp;
 	static char	*s[FD_SIZE];
 
 	if (fd < 0 || !line || BUFF_SIZE <= 0)
 		return (-1);
+
+	ft_bzero(buf, BUFF_SIZE);
 	while (!ft_strchr(buf, '\n'))
 	{
 		ft_bzero(buf, BUFF_SIZE);
@@ -55,7 +58,9 @@ int	get_next_line(const int fd, char **line)
 			return (-1);
 		if (s[fd] == NULL)
 			s[fd] = ft_strnew(0);
-		s[fd] = ft_strfjoin(s[fd], buf);
+		tmp = s[fd];
+		s[fd] = ft_strjoin(s[fd], buf);
+		ft_strdel(&tmp);
 	}
 	*line = ft_strcut(&s[fd]);
 	if (*line)
