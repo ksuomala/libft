@@ -6,7 +6,7 @@
 /*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 17:37:52 by ksuomala          #+#    #+#             */
-/*   Updated: 2021/05/25 18:19:56 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/06/03 14:41:42 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,13 +103,16 @@ char	*ft_chrtobuf(t_struct *f, char c, int n)
 	int	i;
 
 	i = 0;
-	if (f->len == f->buf_size - 1)
-		f->out = ft_realloc_double(&f->out, f->len, f->buf_size);
-	if (!f->out)
-		return (NULL);
 	while (i < n)
 	{
 		f->out[f->len] = c;
+		if (f->len == f->buf_size - 1)
+		{
+			f->out = ft_realloc_double(&f->out, f->len, f->buf_size);
+			f->buf_size *= 2;
+		}
+		if (!f->out)
+			return (NULL);
 		f->len++;
 		i++;
 	}

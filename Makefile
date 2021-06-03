@@ -6,7 +6,7 @@
 #    By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/09 11:51:40 by ksuomala          #+#    #+#              #
-#    Updated: 2021/05/31 16:26:21 by ksuomala         ###   ########.fr        #
+#    Updated: 2021/06/02 15:39:53 by ksuomala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,12 +55,14 @@ INCL = -I ft_printf/includes
 
 PRINTF = ft_printf/libftprintf.a
 
-all: $(NAME)
+all: $(PRINTF)
+
+$(PRINTF): $(NAME) ft_printf/srcs/*.c
+	make -C ft_printf/
+	cp $(PRINTF) $(NAME)
 
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
-	make -C ft_printf/
-	cp $(PRINTF) $(NAME)
 
 $(OBJS): $(SRCS)
 	$(CC) $(SRCS) $(INCL)

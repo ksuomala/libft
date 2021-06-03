@@ -6,7 +6,7 @@
 /*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 15:02:37 by ksuomala          #+#    #+#             */
-/*   Updated: 2021/05/25 18:41:20 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/06/03 14:41:15 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	ft_start(t_struct *f)
 		{
 			if (ft_is_spec(f))
 			{
+				f->i++;
 				f->spe = (t_flags *)malloc(sizeof(t_flags));
 				if (!f->spe)
 					return (0);
@@ -52,10 +53,14 @@ int	ft_start(t_struct *f)
 				if (f->spe)
 					free(f->spe);
 			}
+			else
+				f->i++;
 		}
 		else
+		{
 			ft_chrtobuf(f, f->dup[f->i], 1);
-		f->i++;
+			f->i++;
+		}
 	}
 	return (1);
 }
