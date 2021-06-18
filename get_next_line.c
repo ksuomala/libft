@@ -6,7 +6,7 @@
 /*   By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 18:50:19 by ksuomala          #+#    #+#             */
-/*   Updated: 2021/06/03 15:20:09 by ksuomala         ###   ########.fr       */
+/*   Updated: 2021/06/18 11:28:42 by ksuomala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	get_next_line(const int fd, char **line)
 
 	if (fd < 0 || !line || BUFF_SIZE <= 0)
 		return (-1);
-	ft_bzero(buf, BUFF_SIZE);
+	ft_bzero(&buf, sizeof(char) * BUFF_SIZE + 1);
 	while (!ft_strchr(buf, '\n'))
 	{
 		ret = read(fd, buf, BUFF_SIZE);
