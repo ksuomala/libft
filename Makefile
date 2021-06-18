@@ -6,7 +6,7 @@
 #    By: ksuomala <ksuomala@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/09 11:51:40 by ksuomala          #+#    #+#              #
-#    Updated: 2021/06/02 15:39:53 by ksuomala         ###   ########.fr        #
+#    Updated: 2021/06/18 10:46:27 by ksuomala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,5 +76,5 @@ fclean: clean
 	@rm -f libft.a
 	@rm -f $(PRINTF)
 
-re: fclean $(NAME)
+re: fclean $(PRINTF)
 
