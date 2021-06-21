@@ -10,9 +10,13 @@ int	ft_strnbrcmp(char *a, char *b)
 	int	i;
 
 	i = 0;
-	if (!ft_isnumeric_str(a) || !ft_isnumeric_str(b))
+	if (!ft_isnumeric_str(a) || !ft_isnumeric_str(b) || !a || !b)
 		return (0);
-	while (a[i] == b[i] && a[i])
+	if (ft_strlen(a) > ft_strlen(b))
+		return(1);
+	else if (ft_strlen(b) > ft_strlen(a))
+		return (-1);
+	while (a[i] == b[i])
 		i++;
 	return (a[i] - b[i]);
 }
